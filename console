@@ -1,0 +1,81 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Läs in pris och betalt belopp
+        Console.Write("Ange pris: ");
+        int pris = int.Parse(Console.ReadLine());
+
+        Console.Write("Ange betalt belopp: ");
+        int betalt = int.Parse(Console.ReadLine());
+
+        // Beräkna växel
+        int vaxel = betalt - pris;
+
+        // Kolla om användaren betalat för lite
+        if (vaxel < 0)
+        {
+            Console.WriteLine("Du har betalat för lite. Du saknar {0} kronor.", -vaxel);
+            return;
+        }
+        else if (vaxel == 0)
+        {
+            Console.WriteLine("Du har betalat exakt rätt belopp.");
+            return;
+        }
+
+        // Visa växeln
+        Console.WriteLine("Växel tillbaka: {0} kronor", vaxel);
+
+        // Beräkna antalet sedlar och mynt
+        int femhundralapp = vaxel / 500;
+        vaxel %= 500;
+
+        int tvåhundralapp = vaxel / 200;
+        vaxel %= 200;
+
+        int hundralapp = vaxel / 100;
+        vaxel %= 100;
+
+        int femtiolapp = vaxel / 50;
+        vaxel %= 50;
+
+        int tjuga = vaxel / 20;
+        vaxel %= 20;
+
+        int tia = vaxel / 10;
+        vaxel %= 10;
+
+        int femkrona = vaxel / 5;
+        vaxel %= 5;
+
+        int enkrona = vaxel;
+
+        // Skriv ut antalet sedlar och mynt
+        if (femhundralapp > 0)
+            Console.WriteLine("{0} femhundralapp", femhundralapp);
+
+        if (tvåhundralapp > 0)
+            Console.WriteLine("{0} tvåhundralapp", tvåhundralapp);
+
+        if (hundralapp > 0)
+            Console.WriteLine("{0} hundralapp", hundralapp);
+
+        if (femtiolapp > 0)
+            Console.WriteLine("{0} femtiolapp", femtiolapp);
+
+        if (tjuga > 0)
+            Console.WriteLine("{0} tjugor", tjuga);
+
+        if (tia > 0)
+            Console.WriteLine("{0} tior", tia);
+
+        if (femkrona > 0)
+            Console.WriteLine("{0} femkronor", femkrona);
+
+        if (enkrona > 0)
+            Console.WriteLine("{0} enkronor", enkrona);
+    }
+}
